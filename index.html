@@ -15,25 +15,40 @@
             <p class=" uppercase flex p-1.5 text-[14px] font-extralight font-header text-white justify-center items-center">This interior</p>
          </div> 
          
-          <div class="w-6 h-6 flex flex-col justify-between cursor-pointer mx-2 md:hidden " name="menu" onclick="Menu(this)">
+          <button id="menu-bar" class="w-6 h-6 flex flex-col justify-between cursor-pointer mx-2 md:hidden relative" >
               <span class="w-full h-1 bg-white "></span>
               <span class="w-full h-1 bg-white "></span>
               <span class="w-full h-1 bg-white "></span>
-          </div>
+          </button>
         </div>
-<!-- <ul class="md:flex md:flex-row md:items-center md:mr-[-50px] md:static absolute md:bg-none bg-black w-full left-0 md:w-auto mx-auto"> -->
 
-         <ul class=" md:flex md:items-center md:opacity-100 opacity-0 transition-all ease-in duration-500 ">
-            <li class="menu"> <a class="elements hover: font-bold" href="#">Home</a>
-                <div class="active: border-b-2 w-[57px] border-white"></div>
+        <ul class="md:flex md:items-center hidden sm:block">
+          
+          <li class="  menu  md:relative "> 
+            <a class="elements hover: font-bold" href="#">Home</a>
+            <div class=" absolute active border-b-2 w-[57px] border-white"></div>
+          </li>
+          <li class="menu"> <a class="elements" href="#">Collection</a></li>
+          <li class="menu"> <a class="elements" href="#">About</a></li>
+          <li class="menu"> <a class="elements" href="#">Contact</a></li>
+       </ul>
+
+       <ul id="menu-content" class=" flex flex-col fixed inset-0 md:hidden bg-black md:bg-transparent -translate-x-full items-center justify-center transform  ease-in duration-700 z-50">
+        <button id="menu-close" class="absolute top-4 right-4 cursor-pointer text-white" >
+          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" class="flex w-6 h-6"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        </button>
+                  <li class="menu relative"> 
+              <a class="elements hover: font-bold" href="#">Home</a>
+              <div class=" absolute active border-b-2 w-[57px] border-white"></div>
             </li>
             <li class="menu"> <a class="elements" href="#">Collection</a></li>
             <li class="menu"> <a class="elements" href="#">About</a></li>
             <li class="menu"> <a class="elements" href="#">Contact</a></li>
          </ul>
+        
       </nav>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 mx-auto md:mt-0 mt-[-190px]">
+      <div class=" grid grid-cols-1 md:grid-cols-2 mx-auto md:mt-0 top-20 absolue">
         <div class="ml-4 md:ml-10">
           <h1 class="font-h1 text-[36px] font-medium text-white mt-[38px] md:mt-[210px] gap-[25px] ">Modern Interior</h1>
           <p class="font-p text-[14px] md:text-[24px] font-normal text-white w-[250px] h-[85px] md:w-[410px] md:h-[145px] md:mt-[40px] ">A full service residential & commercialinterior design and staging company offering professional organizing & eco-services.</p>
@@ -61,11 +76,27 @@
     </footer>
 </div>
 
-  <script>
-    function Menu(e){
-      e.name ==='menu' ? e.name ='close' : e.name 
-    }
-  </script>
+<script>
+
+  const menu = document.querySelector('#menu-bar');
+  const menuContent = document.querySelector('#menu-content');
+  const menuClose=document.querySelector('#menu-close');
+// Ajouter un écouteur d'événement 'click' à l'élément 'menu'
+  menu.addEventListener('click', function(e) {
+    console.log('On peut cliquer sur le button')
+    // if(menuContent.classList.contains('opacity-0')) {
+    //   menuContent.classList.remove('opacity-0')
+    // } else {
+    //   menuContent.classList.add('opacity-0')
+    // }
+  // Si la classe est présente, on la supprimée sinon on l'ajoute
+    menuContent.classList.toggle('-translate-x-full')
+  })
+  menuClose.addEventListener ('click',function(e) {
+    menuContent.classList.toggle('-translate-x-full')
+  })
+</script>
+
 
   </body> 
  

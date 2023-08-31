@@ -15,4 +15,9 @@
   .elements{
     @apply text-[18px] font-p font-medium text-white hover:text-orange-200 duration-300 ;
   }
+  .menu-content-open {
+    @apply fixed inset-0 md:hidden bg-black md:bg-transparent opacity-0 transform -translate-x-full ease-in duration-1000 z-50; 
+  }
+  
 }
+
