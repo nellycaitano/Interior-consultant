@@ -50,9 +50,9 @@
 
       <div class=" grid grid-cols-1 md:grid-cols-2 mx-auto md:mt-0 top-20 absolue">
         <div class="ml-4 md:ml-10">
-          <h1 class="font-h1 text-[36px] font-medium text-white mt-[38px] md:mt-[210px] gap-[25px] ">Modern Interior</h1>
-          <p class="font-p text-[14px] md:text-[24px] font-normal text-white w-[250px] sm:w-auto h-[85px] lg:w-[410px] lg:mt-[40px] ">A full service residential & commercialinterior design and staging company offering professional organizing & eco-services.</p>
-          <p class="font-p font-bold text-[14px] md:text-[18px] text-white md:mt-[108px] mt-[65px] flex flex-row gap-4">Read more <svg xmlns="http://www.w3.org/2000/svg" height="1em" class="mt-[5px]" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/></svg></p>
+          <h1 class="font-h1 text-[36px] font-medium text-white mt-[38px] md:mt-[210px] gap-[25px] reveal-1">Modern Interior</h1>
+          <p class="font-p text-[14px] md:text-[24px] font-normal text-white w-[250px] sm:w-auto h-[85px] lg:w-[410px] lg:mt-[40px] reveal-2">A full service residential & commercialinterior design and staging company offering professional organizing & eco-services.</p>
+          <p class="font-p font-bold text-[14px] md:text-[18px] text-white md:mt-[108px] mt-[65px] flex flex-row gap-4  reveal-3">Read more <svg xmlns="http://www.w3.org/2000/svg" height="1em" class="mt-[5px]" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/></svg></p>
         </div>
         <div >
           <div>
@@ -60,7 +60,7 @@
           <div class="bg-[#181719] shadow-md flex flex-col w-auto h-[118px] sm:w-[290px] lg:w-[350px] md:h-[170px] absolute ml-[-95px] lg:ml-[100px] -translate-y-[60px] translate-x-[158px] ">
             <div class="flex w-auto">
               <img src="public/photo2.png" alt="profil" class=" w-[36.59px] h-[36.59px] md:w-[50px] md:h-[50px] ml-[15px] mt-[14px] rounded-full ">
-              <div class="flex flex-col p-4 mr-[115px] md:mr-[150px]">
+              <div class=" p-4 mr-[115px] md:mr-[150px]">
                 <p class="text-[12px] md:text-[14px] font-p text-white font-medium">Aliza Webar</p><br>
                 <p class="text-[10px] md:text-[12px] font-p text-[#818181] font-medium mt-[-20px]">Interior designer</p>
               </div>
@@ -98,6 +98,32 @@
   menuClose.addEventListener ('click',function(e) {
     menuContent.classList.toggle('-translate-x-full')
   })
+
+  const ratio = 0.2
+          const options = {
+              root: null,
+              rootMargin: "0px",
+              threshold: ratio
+            }
+
+            const handleIntersect= function(entries,observer){
+              entries.forEach(function(entry) 
+              {
+                if(entry.intersectionRatio > ratio)
+                {
+                  // ajouter la classe pour faire l'action 
+                  entry.target.classList.add('reveal-visible')
+                  observer.unobserve(entry.target)
+                }
+
+                
+              });
+            }
+            const observer = new IntersectionObserver(handleIntersect, options)
+              document.querySelectorAll('[class*="reveal-"]').forEach(function(r) {
+                observer.observe(r)
+            })
+
 </script>
 
 
